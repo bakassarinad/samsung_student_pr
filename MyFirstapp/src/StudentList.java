@@ -6,7 +6,7 @@ import java.sql.Struct;
 import java.util.*;
 
 public class StudentList {
-	private final ArrayList<Student> students;
+	public final ArrayList<Student> students;
 	private static int idCount = 0;
 	public StudentList() {
 		this.students = new ArrayList<>();	
@@ -116,5 +116,23 @@ public class StudentList {
 			marks += "_" + s.getMarks().get(i).toString();
 		}
 		bw.write(s.getId()+"_"+s.getName()+"_"+s.getSurname()+marks+"\n");
+	}
+	
+	public ArrayList<Student> getStudentByGroup(int id){
+			ArrayList<Student> studentsByGroup = new ArrayList<>();
+			for (Student s: students) {
+				if (s.getGroupId() == id) {
+					studentsByGroup.add(s);
+				}
+			}
+			return studentsByGroup;
+	}
+	public void setGroup(int idGroup, int idStudent) {
+		for (int i = 0; i < students.size(); ++i) {
+			if (students.get(i).getId() == idStudent) {
+				students.get(i).setGroupId(idGroup);
+				break;
+			}
+		}
 	}
 }

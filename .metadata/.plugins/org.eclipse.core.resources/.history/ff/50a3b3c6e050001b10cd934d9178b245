@@ -1,0 +1,81 @@
+
+import java.util.Scanner;
+import java.util.Random;
+import java.util.*;
+import java.io.*;
+import java.util.ArrayList;
+
+
+
+	
+public class MyClass {
+
+	public static void main(String[] args) throws Exception {
+		StudentList students = new StudentList();
+		students.importFromFile();
+		boolean menu = true;
+		Scanner scan = new Scanner(System.in);
+		while (menu) {
+		
+		System.out.println("Choose CRUD:\n"
+		       + "1. Add student\n"
+		       + "2. Update student\n" 
+		       + "3. Get students\n"
+		       + "4. Get a student\n" 
+		       + "5. Remove student\n" 
+		       + "6. Put marks\n"
+		       + "7. Exit");
+			   
+		int option = scan.nextInt();
+		switch (option) {
+		case (1):
+			String name = scan.next();
+			String surname = scan.next();
+			students.add(new Student(name, surname));
+			students.getArrayStudents();
+			break;
+			
+		case (2):
+			System.out.println("Enter id: ");
+			int id = scan.nextInt();
+			System.out.println("Enter new name: ");
+			String newName = scan.next();
+			System.out.println("Enter new surname: ");
+			String newSurname = scan.next();
+			students.update(id, new Student(newName, newSurname));
+			students.getArrayStudents();
+			break;
+			
+		case (3):
+			students.getArrayStudents();
+			break;
+			
+		case (4):
+			System.out.println("Enter id: ");
+			int id4 = scan.nextInt();
+			System.out.println("Name: " + students.getStudent(id4).getName() +"\nSurname: "+ students.getStudent(id4).getSurname()+"/nAvg Mark: " + students.getStudent(id4).avgMark(students.getStudent(id4).getMarks()));
+			break;
+		case (5):
+			System.out.println("Enter id: ");
+			int idR = scan.nextInt();
+			students.remove(idR);
+			break;
+			
+		case (6):
+			System.out.println("Enter id: ");
+			int id1 = scan.nextInt();
+			System.out.println("Enter mark: ");
+			int mark = scan.nextInt();
+			students.setMark(id1, mark);
+			break;
+			
+		case (7):
+			menu = false;
+			System.out.println("Goodbye!");
+			break;
+		}
+		}
+}
+}
+
+	

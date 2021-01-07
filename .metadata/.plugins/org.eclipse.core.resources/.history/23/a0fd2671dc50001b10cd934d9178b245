@@ -1,0 +1,120 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.sql.Struct;
+import java.util.*;
+
+public class StudentList {
+	private final ArrayList<Student> students;
+	private static int idCount = 0;
+	public StudentList() {
+		this.students = new ArrayList<>();	
+	}
+
+	public void add(Student s) throws Exception {
+		if (s == null)
+		{
+			System.out.println("Mistake input");
+		}
+		else
+		{
+			students.add(s);
+			idCount++;
+			s.setId(idCount);
+			exportToFile();
+		}
+	}
+
+	public void update(int id, Student s) throws Exception{
+		for(int i=0; i<students.size(); i++)
+		{
+			if(students.get(i).getId()==id)
+			{
+				if( s.getName()!=null)
+					students.get(i).setName( s.getName());
+				if(s.getSurname()!=null)
+					students.get(i).setSurname( s.getSurname());
+				exportToFile();
+				break;
+			}
+		}
+	}
+
+	public void setMark(int id, int mark) throws Exception {
+		for(int i=0; i<students.size(); i++)
+		{
+			if(students.get(i).getId()==id)
+			{
+				students.get(i).setMark(mark);
+				exportToFile();
+				break;
+			}
+		}
+	}
+	
+	public ArrayList<Student> getStudents() {
+		return students;
+	}
+	
+	public void remove(int id) throws Exception{
+		for (Student student : students) {
+			if (student.getId() == id) {
+				students.remove(student);
+				exportToFile();
+				break;
+			}
+		}
+	}
+	
+	public Student getStudent(int id) {
+		for (Student student : students) {
+			if (id == student.getId()) {
+				return student;
+			}
+		}
+		return null;
+	}
+	public void getArrayStudents() {
+		for (Student student : students) 
+		System.out.println("Id: " + student.getId() +"\nName: " + student.getName() + "\nSurname: "+ student.getSurname() + "\nAvg mark: " + student.avgMark(student.getMarks())+"\nMarks: " + student.getMarks());
+	}
+	private static final String FILENAME = "db.txt"; 
+	
+	public void importFromFile() throws Exception {
+		BufferedReader br = new BufferedReader(new FileReader(FILENAME));
+		while (true) {
+			String line = br.readLine();
+			if (line == null || line.contentEquals("")) {
+				break;
+			}
+			String[] data = line.split("_");
+			int id = Integer.parseInt(data[0]);
+			String name = data[1];
+			String surname = data[2];
+			if(id > idCount)
+				idCount = id;
+			Student s = new Student(name, surname);
+			s.setId(id);
+			for(int i=3; i < data.length; i++)
+				s.setMark(Integer.parseInt(data[i]));
+			students.add(s);
+		}
+	}
+	private void exportToFile() throws Exception {
+		BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME));
+		for(Student st: students)
+		{
+			exportToFile(bw, st);
+		}
+		bw.flush();
+		bw.close();
+	}
+	private void exportToFile(BufferedWriter bw, Student s) throws Exception {
+		String marks = "";
+		for (int i = 0; i < s.getMarks().size(); ++i) {
+			marks += "_" + s.getMarks().get(i).toString();
+		}
+		bw.write(s.getId()+"_"+s.getName()+"_"+s.getSurname()+marks+"\n");
+	}
+}

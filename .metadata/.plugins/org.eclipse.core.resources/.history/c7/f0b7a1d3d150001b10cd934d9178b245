@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+
+public class GroupList {
+	ArrayList<Group> groups;
+	
+	public GroupList() {
+		groups = new ArrayList<>();
+	}
+	 public void add(Group g) {
+		 
+	 }
+	 public void update(Group g) {
+		 
+	 }
+	 public void remove(Group g) {
+		 
+	 }
+}

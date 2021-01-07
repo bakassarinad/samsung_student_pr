@@ -1,0 +1,52 @@
+import java.security.InvalidParameterException;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+
+public class GroupList {
+	ArrayList<Group> groups;
+	int idCounterGroup = 0;
+	
+	public GroupList() {
+		groups = new ArrayList<>();
+	}
+	 public void add(Group g) {
+		 if (g == null) {
+			 throw new InvalidParameterException(("No parameter for group object!"));
+		 }else
+		 {
+			 groups.add(g);
+			 idCounterGroup++;
+			 g.setId(idCounterGroup);
+			 
+		 }
+	 }
+	 public void update(int id, Group g) {
+		 for (int i = 0; i < groups.size(); ++i) {
+			 if (groups.get(i).getId() == id) {
+				 if (g.getNameGroup() != null) {
+					 groups.get(i).setNameGroup(g.getNameGroup());
+					 break;
+				 }
+			 }
+		 }
+	 }
+	 public void remove(int id) {
+		 for (Group group: groups) {
+			 if (group.getId() == id) {
+				 groups.remove(group);
+				 break;
+			 }
+		 }
+	 }
+	 public ArrayList<Group> getGroups(){
+		 return groups;
+	 }
+	 public Group getGroup(int id) {
+		for (Group group: groups) {
+			if (id == group.getId()) {
+				return group;
+			}
+		}
+		return null;
+	 }
+}

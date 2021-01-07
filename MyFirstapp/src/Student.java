@@ -9,6 +9,13 @@ public class Student {
 	int id = 0;
 	int mark;
 	int COURSES = 8;
+	int groupId;
+	public int getGroupId() {
+		return groupId;
+	}
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
+	}
 	ArrayList<Integer> marks = new ArrayList<Integer>(COURSES);
 	public int getMark() {
 		return mark;
@@ -21,7 +28,7 @@ public class Student {
 
 	public Student(String name, String surname) {
 		this.name = name;
-		this.surname = surname;
+		this.surname = surname;	
 	}
 	
 	public Student(int mark) {
