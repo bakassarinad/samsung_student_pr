@@ -1,0 +1,31 @@
+import java.util.Scanner;
+import java.util.Random;
+import java.util.*;
+import java.io.*;
+public class MyClass {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			
+		
+		  
+		  Scanner scan = new Scanner(System.in);
+	        Random random = new Random();
+	        double cur_curse = 440.0;
+	        double ans = 0;
+	        int year = scan.nextInt();
+	        while (year != 0){
+	            for (int i = 1; i <= year; i++) {
+	                double p = random.nextFloat() * 2 + 4;
+	                ans = cur_curse - ((cur_curse * p)/100);
+	                System.out.println(i+" year "+p+"%:"+ans);
+	            }
+	            --year;
+	    }
+	        
+	        	
+	
+	        
+}
+	

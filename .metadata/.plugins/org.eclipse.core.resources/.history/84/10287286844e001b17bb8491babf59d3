@@ -1,0 +1,92 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.*;
+
+public class StudentList {
+	Scanner scan = new Scanner(System.in);
+	private final ArrayList<Student> students;
+	private int id = 1;
+	
+	public StudentList() {
+		this.students = new ArrayList<>();	
+	}
+	public void add(Student s) throws Exception {
+		if (s == null) {
+			System.out.println("Mistake input");
+		}else
+		{
+			students.add(s);
+			s.setId(id++);
+			exportToFile(s);
+			
+		}
+	}
+	public void update(Student s) throws Exception{
+		
+			System.out.println("Enter id: ");
+			int id = scan.nextInt();
+			for (Student student : students) { 
+				if (student.getId() == id) {
+				System.out.println("Fot updating choose: 1. To update name;\n2. To update surname;");
+				int updating = scan.nextInt();
+				switch (updating) {
+				case (1):
+					String updName = scan.next();
+					student.setName(updName);
+					break;
+				case (2):
+					String updSurname = scan.nextLine();
+					s.setSurname(updSurname);
+				}
+				}
+				
+				
+			}
+			
+		
+	}
+	
+	
+	public ArrayList<Student> getStudents() {
+		return students;
+	}
+	
+	public void remove(int id) throws Exception{
+		for (Student student : students) {
+			if (student.getId() == id) {
+				students.remove(id-1);
+				exportToFile(student);
+			}
+		}
+	}
+	
+	public Student getStudent(int id) {
+		for (Student student : students) {
+			if (id == student.getId()) {
+				return student;
+			}
+		}
+		return null;
+	
+	}
+	public void getArrayStudents() {
+		for (Student student : students) 
+		System.out.println("Id: " + student.getId() +"\nName: " + student.getName() + "\nSurname: "+ student.getSurname() + "\nAvg mark: " + student.avgMark(student.getMarks())+"\nMarks: " + student.getMarks());
+	}
+	private static final String FILENAME = "db.txt"; 
+	
+	private void importFromFile() throws Exception {
+		BufferedReader br = new BufferedReader(new FileReader(FILENAME));
+	}
+	
+	private void exportToFile(Student s) throws Exception {
+		BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME));
+		String marks = "";
+		
+		bw.write(s.getId()+"_"+s.getName()+"_"+s.getSurname()+"_");
+		bw.flush();
+		bw.close();
+	}
+}

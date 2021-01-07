@@ -1,0 +1,13 @@
+
+public class MyClass {
+
+	public static void Main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Hello! Good news today!\nThe first program created!!!");
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Hello! Good news today!\nThe first program created!!!");
+	}
+
+}

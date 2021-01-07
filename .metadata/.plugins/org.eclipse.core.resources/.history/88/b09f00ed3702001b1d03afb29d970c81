@@ -1,0 +1,16 @@
+
+public class MyClass {
+
+	public static void Main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("ay!\n!!!");
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Hello! Good news today!\nThe first program created!!!");
+		int x = 2; 
+		int y = 3;
+		int z = 3*x-2+(x+2*(y+1))/(y*y-(y+x*x));
+	}
+
+}

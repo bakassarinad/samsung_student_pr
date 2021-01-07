@@ -1,0 +1,72 @@
+1. 
+public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner scan = new Scanner(System.in);
+		int x = scan.nextInt();
+		int i = 0;
+		while (i < 101) {
+			if (i % x == 0) {
+				System.out.println(i);
+			}
+			i++;
+		}
+			
+
+	}
+2. public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner scan = new Scanner(System.in);
+		int x = scan.nextInt();
+		int i = 0;
+		int sum = 0;
+		while (i <= x) {
+			sum+=i;
+			i++;
+		}
+		System.out.println(sum);
+
+	}
+3. Scanner scan = new Scanner(System.in);
+		int x = scan.nextInt();
+		int i = x;
+		int sum = 0;
+		while (i > 0) {
+			sum+=1;
+			i /=10;
+		}
+		System.out.println(sum);
+
+
+4. Scanner scan = new Scanner(System.in);
+		int x = scan.nextInt();
+		int i = x;
+		int sum = 0;
+		while (i > 0) {
+			sum = sum + i%10;
+			i /=10;
+		}
+		System.out.println(sum);
+
+5.
+
+		Scanner scan = new Scanner(System.in);
+		int x = scan.nextInt();
+		int i = x;
+		int ost;
+		int max = -1000000;
+		int min = 10000000;
+		while (i > 0) {
+			ost =i % 10;
+			if (ost > max) {
+				max = ost;
+			}
+			if (ost < min) {
+				min = ost;
+			}
+			i /= 10;
+		}
+		System.out.println(min + " " + max);
+
+6.

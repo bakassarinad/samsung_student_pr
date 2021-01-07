@@ -1,0 +1,54 @@
+import java.util.Scanner;
+import java.util.Random;
+import java.util.*;
+import java.io.*;
+public class MyClass {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			
+		
+		Scanner scan = new Scanner(System.in);
+		String first_time = scan.nextLine();
+		String second_time = scan.nextLine();
+	    
+		int dot = first_time.indexOf(":");
+		int net = second_time.indexOf(":");
+		int first_h = Integer.parseInt(first_time.substring(0, dot));
+		int first_m = Integer.parseInt(first_time.substring(dot+1));
+		
+		int second_h = Integer.parseInt(first_time.substring(0, net));
+		int second_m = Integer.parseInt(first_time.substring(net+1));
+		
+		int sum_h = 0;
+		int sum_m = 0;
+		int days = 0;
+		
+		String min;
+		String hours;
+		sum_h = first_h + second_h;
+		
+		if (sum_m >= 60) {
+			sum_h++;
+			sum_m%=60;
+		}
+		if (sum_h >= 24) {
+			days++;
+			sum_h%=24;
+		}
+		
+		if (sum_m < 10) {
+			min = "0" + sum_m;
+		}
+		if (sum_h < 10) {
+			hours = "0" + sum_h;
+		}
+		System.out.println(days + "d " + min +":"+ hours);
+		
+	        
+	        	
+	}
+	        
+}
+	

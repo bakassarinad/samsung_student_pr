@@ -1,0 +1,19 @@
+import java.util.Scanner;
+import java.io.*;
+public class MyClass {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scan = new Scanner(System.in);
+		int x = scan.nextInt();
+		int y = scan.nextInt();
+		int i;
+		int sum = 0;
+		for (i = x; i <= y; i++) {
+			sum += i*i;
+		}
+		System.out.println(sum);
+		
+	}
+}
